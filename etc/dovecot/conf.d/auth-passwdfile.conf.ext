@@ -1,0 +1,12 @@
+# Included from 10-auth.conf
+
+passdb {
+  driver = passwd-file
+  args = username_format=%u scheme=SHA512-CRYPT /etc/dovecot/auth.d/passwd
+}
+
+userdb {
+  driver = passwd-file
+  args = username_format=%u /etc/dovecot/auth.d/passwd
+  default_fields = uid=5000 gid=5000 home=/var/spool/vmail/%u
+}

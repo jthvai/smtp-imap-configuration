@@ -1,0 +1,98 @@
+# Global Postfix configuration file. This file lists only a subset
+# of all parameters. For the syntax, and for a complete parameter
+# list, see the postconf(5) manual page (command: "man 5 postconf").
+#
+# For common configuration examples, see BASIC_CONFIGURATION_README
+# and STANDARD_CONFIGURATION_README. To find these documents, use
+# the command "postconf html_directory readme_directory", or go to
+# http://www.postfix.org/BASIC_CONFIGURATION_README.html etc.
+#
+# For best results, change no more than 2-3 parameters at a time,
+# and test if Postfix still works after every change.
+
+compatibility_level = 2
+
+#-----------------------------------------------------------------------
+# Miscellaneous
+#-----------------------------------------------------------------------
+
+home_mailbox = Maildir/
+mailbox_size_limit = 0
+virtual_mailbox_limit = 3000000000
+message_size_limit = 500000000
+
+#-----------------------------------------------------------------------
+# Network
+#-----------------------------------------------------------------------
+
+mydomain = jthv.ai
+myorigin = $mydomain
+mydestination = $myhostname
+
+inet_protocols = ipv4
+
+#-----------------------------------------------------------------------
+# Users/Groups
+#-----------------------------------------------------------------------
+
+alias_maps = hash:/etc/postfix/maps.d/aliases
+alias_database = $alias_maps
+
+virtual_mailbox_domains = $mydomain
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000
+virtual_alias_maps = hash:/etc/postfix/maps.d/virtual
+virtual_mailbox_base = /var/spool/vmail
+virtual_mailbox_maps = inline:{ a=a/, acc=acc/, ml=ml/ }
+
+#-----------------------------------------------------------------------
+# Logging
+#-----------------------------------------------------------------------
+
+maillog_file = /var/log/postfix.log
+
+#-----------------------------------------------------------------------
+# RFC821
+#-----------------------------------------------------------------------
+
+strict_rfc821_envelopes = yes
+disable_vrfy_command = yes
+
+#-----------------------------------------------------------------------
+# SMTP
+#-----------------------------------------------------------------------
+
+smtp_tls_security_level = may
+smtp_tls_cert_file = /etc/ssl/private/jthv.ai.pem
+smtp_tls_key_file = $smtp_tls_cert_file
+
+#-----------------------------------------------------------------------
+# SMTPD
+#-----------------------------------------------------------------------
+
+smtpd_recipient_restrictions =
+  reject_unknown_sender_domain
+  permit_auth_destination
+  permit_sasl_authenticated
+  reject
+
+smtpd_tls_security_level = may
+smtpd_tls_cert_file = $smtp_tls_cert_file
+smtpd_tls_key_file = $smtp_tls_cert_file
+smtpd_tls_received_header = yes
+
+#-----------------------------------------------------------------------
+# Authentication
+#-----------------------------------------------------------------------
+
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_tls_auth_only = yes
+
+smtpd_sasl_local_domain = $mydomain
+
+broken_sasl_auth_clients = yes
+
+smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_tls_security_options = noanonymous
