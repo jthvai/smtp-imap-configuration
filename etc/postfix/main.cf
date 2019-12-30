@@ -63,7 +63,7 @@ disable_vrfy_command = yes
 #-----------------------------------------------------------------------
 
 smtp_tls_security_level = may
-smtp_tls_cert_file = /etc/ssl/private/jthv.ai.pem
+smtp_tls_cert_file = /etc/ssl/private/domain.pem
 smtp_tls_key_file = $smtp_tls_cert_file
 
 #-----------------------------------------------------------------------
