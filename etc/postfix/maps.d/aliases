@@ -5,7 +5,7 @@
 #
 
 # Person who should get root's mail. Don't receive mail as root!
-root:            root
+root:            adm@jthv.ai
 
 # Basic system aliases -- these MUST be present
 MAILER-DAEMON:   postmaster
