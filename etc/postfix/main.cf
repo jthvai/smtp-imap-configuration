@@ -81,8 +81,6 @@ smtpd_tls_exclude_ciphers = SSLv3
 
 smtpd_tls_cert_file = $smtp_tls_cert_file
 smtpd_tls_key_file = $smtp_tls_cert_file
-smtpd_tls_eccert_file = $smtp_tls_cert_file
-smtpd_tls_eckey_file = $smtp_tls_cert_file
 
 smtpd_tls_received_header = yes
 

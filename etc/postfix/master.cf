@@ -12,6 +12,7 @@
 smtp       inet  n       -       y       -       -       smtpd
 submission inet  n       -       y       -       -       smtpd
   -o smtpd_tls_security_level=encrypt
+# Make sure to include smtps entry in /etc/services
 smtps      inet  n       -       y       -       -       smtpd
   -o smtpd_tls_wrappermode=yes
 pickup     unix  n       -       -       60      1       pickup
