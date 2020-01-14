@@ -29,8 +29,6 @@ mydomain = jthv.ai
 myorigin = $mydomain
 mydestination = $myhostname
 
-inet_protocols = ipv4
-
 #-----------------------------------------------------------------------
 # Users/Groups
 #-----------------------------------------------------------------------
@@ -63,6 +61,8 @@ disable_vrfy_command = yes
 #-----------------------------------------------------------------------
 
 smtp_tls_security_level = may
+smtp_tls_exclude_ciphers = SSLv3
+
 smtp_tls_cert_file = /etc/ssl/private/jthv.ai.pem
 smtp_tls_key_file = $smtp_tls_cert_file
 
@@ -77,8 +77,13 @@ smtpd_recipient_restrictions =
   reject
 
 smtpd_tls_security_level = may
+smtpd_tls_exclude_ciphers = SSLv3
+
 smtpd_tls_cert_file = $smtp_tls_cert_file
 smtpd_tls_key_file = $smtp_tls_cert_file
+smtpd_tls_eccert_file = $smtp_tls_cert_file
+smtpd_tls_eckey_file = $smtp_tls_cert_file
+
 smtpd_tls_received_header = yes
 
 #-----------------------------------------------------------------------
