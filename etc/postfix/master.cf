@@ -10,8 +10,9 @@
 #               (yes)   (yes)   (no)    (never) (100)
 # ==========================================================================
 smtp       inet  n       -       y       -       -       smtpd
-submission inet  n       -       y       -       -       smtpd
-  -o smtpd_tls_security_level=encrypt
+# Prefer TLS wrapper mode
+#submission inet  n       -       y       -       -       smtpd
+#  -o smtpd_tls_security_level=encrypt
 # Make sure to include smtps entry in /etc/services
 smtps      inet  n       -       y       -       -       smtpd
   -o smtpd_tls_wrappermode=yes
