@@ -70,26 +70,36 @@ smtp_tls_key_file = $smtp_tls_cert_file
 # SMTPD
 #-----------------------------------------------------------------------
 
-smtpd_recipient_restrictions =
-  reject_unknown_sender_domain
-  permit_auth_destination
-  permit_sasl_authenticated
-  reject
+smtpd_helo_required = yes
 
 smtpd_tls_security_level = may
 smtpd_tls_exclude_ciphers = SSLv3
 
-smtpd_tls_cert_file = $smtp_tls_cert_file
+smtpd_tls_cert_file = /etc/ssl/private/jthv.ai.pem
 smtpd_tls_key_file = $smtp_tls_cert_file
 
 smtpd_tls_received_header = yes
 
-#-----------------------------------------------------------------------
-# Authentication
-#-----------------------------------------------------------------------
+smtpd_helo_restrictions =
+  reject_unknown_helo_hostname
 
+smtpd_sender_restrictions =
+  check_sender_access hash:/etc/postfix/maps.d/blacklist
+  reject_unknown_sender_domain
+
+smtpd_relay_restrictions =
+  permit_auth_destination
+  reject
+
+smtpd_recipient_restrictions =
+
+smtpd_data_restrictions =
+  reject_unauth_pipelining
+
+# Authentication
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
+
 smtpd_sasl_auth_enable = yes
 smtpd_tls_auth_only = yes
 
