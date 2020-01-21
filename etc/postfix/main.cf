@@ -85,6 +85,8 @@ smtpd_relay_restrictions =
   reject
 
 smtpd_recipient_restrictions =
+  permit_auth_destination
+  reject
 
 smtpd_data_restrictions =
   reject_unauth_pipelining
