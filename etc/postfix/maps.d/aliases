@@ -5,27 +5,27 @@
 #
 
 # Person who should get root's mail. Don't receive mail as root!
-root:            adm
+root:            a
 
 # Basic system aliases -- these MUST be present
-MAILER-DAEMON:   adm
-postmaster:      adm
+MAILER-DAEMON:   a
+postmaster:      a
 
 # General redirections for pseudo accounts
-bin:             adm
-daemon:          adm
-named:           adm
-nobody:          adm
-uucp:            adm
-www:             adm
-ftp-bugs:        adm
-postfix:         adm
+bin:             a
+daemon:          a
+named:           a
+nobody:          a
+uucp:            a
+www:             a
+ftp-bugs:        a
+postfix:         a
 
 # Well-known aliases
-manager:         adm
-dumper:          adm
-operator:        adm
-abuse:           adm
+manager:         a
+dumper:          a
+operator:        a
+abuse:           a
 
 # trap decode to catch security attacks
-decode:          adm
+decode:          a

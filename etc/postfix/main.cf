@@ -47,7 +47,7 @@ virtual_uid_maps = static:5000
 virtual_gid_maps = static:5000
 virtual_alias_maps = hash:/etc/postfix/maps.d/virtual
 virtual_mailbox_base = /var/spool/vmail
-virtual_mailbox_maps = inline:{ a=a/, acc=acc/, adm=adm/, ml=ml/ }
+virtual_mailbox_maps = inline:{ a=a/, acc=acc/, ml=ml/ }
 
 #-----------------------------------------------------------------------
 # SMTP
