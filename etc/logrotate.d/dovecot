@@ -1,0 +1,6 @@
+/var/log/dovecot/* {
+  daily
+  rotate 4
+  missingok
+  dateext
+}
