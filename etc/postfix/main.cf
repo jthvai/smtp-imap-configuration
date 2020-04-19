@@ -32,7 +32,7 @@ maillog_file = /var/log/postfix.log
 
 milter_default_action = accept
 
-smtpd_milters = unix:/run/opendkim/opendkim.sock
+smtpd_milters = unix:opendkim/opendkim.sock
 non_smtpd_milters = $smtpd_milters
 
 #-----------------------------------------------------------------------
